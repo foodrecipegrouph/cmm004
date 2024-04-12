@@ -152,7 +152,8 @@
     <button type="submit">Send Message</button>
   </form>
   
-  <?php
+  <?PHP
+
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $name = $_POST['name'];
       $email = $_POST['email'];
