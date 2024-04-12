@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicious Delights: A Culinary Adventure</title>
+    <style>
+        /* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            background-image: url("abt.jpg");
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #edff47;
+            color: #eb0c0c;
+            text-align: center;
+            padding: 10px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        nav {
+            background-color: #ebda1e;
+            color: #ed1111;
+            padding: 10px 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        nav ul li.active a {
+            font-weight: bold;
+        }
+
+
+
+        h2 {
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        .tip {
+            background-color: #ffffffda;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            border: #e2ea09;
+        }
+
+        .tip h3 {
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tip p {
+            font-size: 1.2rem;
+        }
+
+        .food-photography {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .food-photo {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: moveLikeChess 5s infinite alternate;
+            width: 100%; /* Ensure all images take up the full width of their container */
+        }
+
+        @keyframes moveLikeChess {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .food-photo img {
+            width: 100%;
+            height: auto;
+        }
+
+        footer {
+            background-color: #e2ea09;
+            color: #f10808;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        footer p {
+            font-size: 1.2rem;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+
+        footer ul li {
+            display: inline;
+            margin-right: 1rem;
+        }
+
+        footer ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            main {
+                padding: 1rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .tip {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+   
+        <nav style="text-align: center;">
+            <ul>
+                <li>
+                    <a href="inde.php">Home</a>
+                </li>
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+                <li>
+                    <a href="featuredrecipe.html">Featured Recipe</a>
+                </li>
+                <li>
+                    <a href="blog.html">Blog</a>
+                </li>
+                <li class="active">
+                    <a href="contact.html">Contact Us</a>
+                </li>
+            </ul>
+        </nav>
+       
+
+    
+
+    <main>
+        <section class="featured-recipes">
+
+            <!-- Featured recipes content goes here -->
+        </section>
+
+        <section class="tips-and-techniques">
+            <h2 style="color: tomato; background-color: white; text-align: center;">Cooking Tips and Techniques</h2>
+            <div class="tip">
+                <h3>Knife Skills 101</h3>
+                <p>Master the art of chopping, slicing, and dicing like a pro with our comprehensive guide to knife
+                    skills.</p>
+            </div>
+            <div class="tip">
+                <h3>Flavor Pairing</h3>
+                <p>Discover the secrets of flavor pairing and learn how to create harmonious flavor combinations that
+                    will take your dishes from good to extraordinary.</p>
+            </div>
+            <div class="tip">
+                <h3>Perfecting the Sear</h3>
+                <p>Unlock the secrets to achieving the perfect sear on meats and seafood, imparting irresistible flavor
+                    and texture to your dishes.</p>
+            </div>
+
+            <div class="tip">
+                <h3>Safety in the kitchen</h3>
+                <p>Unlock the secrets to achieving the perfect sear on meats and seafood, imparting irresistible flavor
+                    and texture to your dishes.</p>
+            </div>
+        </section>
+
+        <section class="food-photography">
+
+           
+          
+            <div class="food-photo" style="align-items: center;">
+                <img src="G3.jpeg" height="200px" width="200px" alt="Food Photo 3">
+            </div>
+           
+            
+           
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 De- Chef<a href=""> Your Kitchen Companion</a></p>
+        <ul>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twitter</a></li>
+        </ul>
+    </footer>
+</body>
+
+</html>

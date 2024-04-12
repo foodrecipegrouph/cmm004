@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Featuredrecipe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-image: url("abt.jpg");
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .form-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 80%;
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+
+        header,
+        footer {
+            text-align: center;
+            background-color: white;
+            color: tomato;
+            padding: 10px 0;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .image-container {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-gap: 20px;
+            justify-items: center;
+            width: 200px;
+
+        }
+
+        .card-container {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            width: 120px;
+            /* Adjusted width for smaller images */
+            text-align: center;
+        }
+
+        .zoom-img {
+            transition: transform 0.3s;
+            width: 100%;
+            /* Ensures the image fits within the container */
+        }
+
+        .zoom-img:hover {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 10px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: calc(100% - 20px);
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        nav {
+            background-color: #ebda1e;
+            color: #ed1111;
+            padding: 10px 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        nav ul li.active a {
+            font-weight: bold;
+        }
+
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #fefafa;
+            color: tomato;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav style="text-align: center;">
+            <ul>
+                <li>
+                    <a href="inde.php">Home</a>
+                </li>
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+                <li>
+                    <a href="featuredrecipe.html">Featured Recipe</a>
+                </li>
+                <li>
+                    <a href="blog.html">Blog</a>
+                </li>
+                <li class="active">
+                    <a href="contact.html">Contact Us</a>
+                </li>
+            </ul>
+        </nav>
+        <h3>Image Gallery</h3>
+
+    </header>
+
+    <div class="form-container">
+
+        <input type="text" id="userName" placeholder="Your Name" required>
+        <input type="text" id="email" placeholder="Your Email" required>
+        <input type="text" id="recipeName" placeholder="Recipe Name" required>
+        <textarea id="ingredients" placeholder="Ingredients" required></textarea>
+        <textarea id="preparations" placeholder="Preparations" required></textarea>
+        <input type="file" id="fileInput" accept="image/*" style="margin-bottom: 20px;">
+        <button onclick="uploadImage()">Upload Image</button>
+    </div>
+
+    <div class="image-container" id="imageContainer"></div>
+
+    <footer>
+        <p>© 2024 De- Chef<a href=""> Your Kitchen Companion</a></p>
+    </footer>
+
+    <script>
+        window.onload = function () {
+            const savedImages = JSON.parse(localStorage.getItem('images')) || [];
+            savedImages.forEach(image => {
+                addImageToGallery(image.src, image.info);
+            });
+
+            // Set the admin password if it doesn't exist
+            if (!localStorage.getItem('adminPassword')) {
+                const adminPassword = prompt('Set the admin password:');
+                localStorage.setItem('adminPassword', adminPassword);
+                alert('Admin password set successfully.');
+            }
+        };
+
+        function addImageToGallery(src, info) {
+            const imagePreview = document.createElement('div');
+            imagePreview.className = 'card-container';
+            const img = new Image();
+            img.src = src;
+            img.className = 'zoom-img';
+            img.onclick = function () {
+                this.classList.toggle('zoomed');
+            };
+
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'card-content';
+            contentDiv.appendChild(img);
+            contentDiv.innerHTML += info;
+            imagePreview.appendChild(contentDiv);
+
+            const container = document.getElementById('imageContainer');
+            container.appendChild(imagePreview);
+        }
+
+        function uploadImage() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            const userName = document.getElementById('userName').value || "User";
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    const imageSrc = event.target.result;
+                    const uploadDate = new Date().toLocaleString();
+                    const recipeName = document.getElementById('recipeName').value;
+                    const ingredients = document.getElementById('ingredients').value;
+                    const preparations = document.getElementById('preparations').value;
+
+                    const info = `
+                        <div><strong>Uploaded by:</strong> ${userName}</div>
+                        <div><strong>Date:</strong> ${uploadDate}</div>
+                        <div><strong>Recipe Name:</strong> ${recipeName}</div>
+                        <div><strong>Ingredients:</strong> ${ingredients}</div>
+                        <div><strong>Preparations:</strong> ${preparations}</div>
+                    `;
+                    addImageToGallery(imageSrc, info);
+
+                    const savedImages = JSON.parse(localStorage.getItem('images')) || [];
+                    savedImages.push({ src: imageSrc, info: info, uploader: userName }); // Added uploader info
+                    localStorage.setItem('images', JSON.stringify(savedImages));
+
+                    // Clear input fields and placeholders
+                    fileInput.value = '';
+                    document.getElementById('userName').value = '';
+                    document.getElementById('recipeName').value = '';
+                    document.getElementById('ingredients').value = '';
+                    document.getElementById('preparations').value = '';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                alert('Please select an image file.');
+            }
+        }
+
+        function deleteAllImages() {
+            const adminPassword = prompt('Enter admin password:');
+            const storedPassword = localStorage.getItem('adminPassword');
+
+            if (adminPassword === storedPassword) {
+                const savedImages = JSON.parse(localStorage.getItem('images')) || [];
+                const newImages = savedImages.filter(image => image.uploader === "Admin"); // Change "Admin" to the admin's username
+                localStorage.setItem('images', JSON.stringify(newImages));
+                renderImages(newImages);
+                alert('All images uploaded by admin deleted successfully.');
+            } else {
+                alert('Incorrect admin password.');
+            }
+        }
+
+        function renderImages(images) {
+            const container = document.getElementById('imageContainer');
+            container.innerHTML = '';
+            images.forEach(image => {
+                addImageToGallery(image.src, image.info);
+            });
+        }
+    </script>
+</body>
+
+</html>
