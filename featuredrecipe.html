@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,62 +12,72 @@
             background-color: #f4f4f4;
             background-image: url("abt.jpg");
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: left;
+            align-items: left;
             flex-direction: column;
         }
 
         .form-container {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 80%;
-            max-width: 400px;
-            margin-bottom: 20px;
-        }
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 80%;
+    max-width: 300px;
+    margin: 0 auto 20px; /* Set auto margin for horizontal centering */
+}
 
-        header,
-        footer {
+
+        header {
             text-align: center;
             background-color: white;
             color: tomato;
             padding: 10px 0;
             width: 100%;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+
         }
 
-        .image-container {
-            display: grid;
-            grid-template-columns: repeat(8, 1fr);
-            grid-gap: 20px;
-            justify-items: center;
-            width: 200px;
+        footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background-color: white;
+    color: tomato;
+    padding: 10px 0;
+}
 
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 800px; /* Adjust as needed */
         }
 
         .card-container {
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
-            width: 120px;
-            /* Adjusted width for smaller images */
-            text-align: center;
-        }
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    width: 300px;
+    text-align: left;
+    margin-left: 10px;
+    margin-bottom: 20px; /* Add bottom margin */
+}
+
 
         .zoom-img {
             transition: transform 0.3s;
             width: 100%;
-            /* Ensures the image fits within the container */
         }
 
         .zoom-img:hover {
             transform: scale(1.1);
-        }
-
-        .card-content {
-            padding: 10px;
         }
 
         input[type="text"],
@@ -106,9 +115,9 @@
             font-weight: bold;
         }
 
-
         button {
-            width: 100%;
+            align-items: center;
+            width: 20%;
             padding: 10px;
             background-color: #fefafa;
             color: tomato;
@@ -117,46 +126,45 @@
             cursor: pointer;
         }
 
+        .button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Add margin for spacing */
+}
+
+
         button:hover {
             background-color: #555;
         }
     </style>
 </head>
-
 <body>
     <header>
         <nav style="text-align: center;">
             <ul>
-                <li>
-                    <a href="inde.php">Home</a>
-                </li>
-                <li>
-                    <a href="about.html">About</a>
-                </li>
-                <li>
-                    <a href="featuredrecipe.html">Featured Recipe</a>
-                </li>
-                <li>
-                    <a href="blog.html">Blog</a>
-                </li>
-                <li class="active">
-                    <a href="contact.html">Contact Us</a>
-                </li>
+                <li><a href="inde.php">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="featuredrecipe.html">Featured Recipe</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li class="active"><a href="contact.php">Contact Us</a></li>
             </ul>
         </nav>
-        <h3>Image Gallery</h3>
-
+        <h3>Shared Recipes</h3>
     </header>
 
-    <div class="form-container">
+    <div class="button-container">
+        <button id="showFormButton" onclick="toggleForm()">Click to Share Your Recipe</button>
+    </div>
+    
 
+    <div class="form-container" id="formContainer" style="display: none;">
         <input type="text" id="userName" placeholder="Your Name" required>
         <input type="text" id="email" placeholder="Your Email" required>
         <input type="text" id="recipeName" placeholder="Recipe Name" required>
         <textarea id="ingredients" placeholder="Ingredients" required></textarea>
         <textarea id="preparations" placeholder="Preparations" required></textarea>
         <input type="file" id="fileInput" accept="image/*" style="margin-bottom: 20px;">
-        <button onclick="uploadImage()">Upload Image</button>
+        <button onclick="uploadImage()">SUBMIT</button>
     </div>
 
     <div class="image-container" id="imageContainer"></div>
@@ -179,6 +187,19 @@
                 alert('Admin password set successfully.');
             }
         };
+
+        function toggleForm() {
+            const formContainer = document.getElementById('formContainer');
+            const button = document.getElementById('showFormButton');
+
+            if (formContainer.style.display === 'none') {
+                formContainer.style.display = 'block';
+                button.textContent = 'Hide Form';
+            } else {
+                formContainer.style.display = 'none';
+                button.textContent = 'Click to Add a Recipe';
+            }
+        }
 
         function addImageToGallery(src, info) {
             const imagePreview = document.createElement('div');
@@ -233,6 +254,10 @@
                     document.getElementById('recipeName').value = '';
                     document.getElementById('ingredients').value = '';
                     document.getElementById('preparations').value = '';
+
+                    // Hide the form after submission
+                    document.getElementById('formContainer').style.display = 'none';
+                    document.getElementById('showFormButton').textContent = 'Click to Show Form';
                 };
                 reader.readAsDataURL(file);
             } else {
@@ -258,11 +283,10 @@
         function renderImages(images) {
             const container = document.getElementById('imageContainer');
             container.innerHTML = '';
-            images.forEach(image => {
+            images.forEach(image => {show
                 addImageToGallery(image.src, image.info);
             });
         }
     </script>
 </body>
-
 </html>
