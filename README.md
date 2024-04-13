@@ -15,7 +15,7 @@ To initiate your use of De-chef Recipe Sharing, please visit our website at  and
 ## Contribution Guidelines De-chef Recipe Sharing is a collaborative effort that is freely available for anybody to contribute to, and we encourage participation from the community. If you like to participate in the advancement of De-chef, kindly visit our GitHub repository at https://github.com/foodrecipegrouph/cmm004.git to get detailed instructions on how to become involved.
 
 ## Assistance
-If you have any difficulties or have any inquiries when using De-chef Recipe Sharing, please feel free to contact us at support@dechef.com. Our staff is here to support you and guarantee that you have an exceptional experience on our platform.
+If you have any difficulties or have any inquiries when using De-chef Recipe Sharing, please feel free to contact us at sefaboakye2023@outlook.com. Our staff is here to support you and guarantee that you have an exceptional experience on our platform.
 
 ## Our Background
 De-chef Recipe Sharing was created by a team of enthusiastic students from RGU School of Computing as a project to construct a cutting-edge online application. Our utmost dedication is in ensuring a user-friendly and pleasurable experience for every individual passionate about food.
