@@ -139,17 +139,17 @@
     <h2>Contact Us</h2>
     <div class="input-group">
       <input type="text" name="name" placeholder="Full Name" required>
-      <label for="name">Your Name</label>
+     
     </div>
     <div class="input-group">
       <input type="email" name="email" placeholder="Email" required>
-      <label for="email">Your Email</label>
+      
     </div>
     <div class="input-group">
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <label for="message">Your Message</label>
+      <input type="submit" value="Submit">
     </div>
-    <button type="submit">Send Message</button>
+   
   </form>
   
   <?PHP
@@ -159,24 +159,23 @@
       $email = $_POST['email'];
       $message = $_POST['message'];
       
-      // Email address to send the message to
-      $to = 'sefaboakye2023@outlook.com';
-      
-      // Subject of the email
+     
+      $to = 'foodrecipegrough@outlook.com';
+   
       $subject = 'New Message from Contact Form';
       
-      // Compose the message
+    
       $email_message = "Name: $name\n";
       $email_message .= "Email: $email\n\n";
       $email_message .= "Message:\n$message";
       
-      // Headers
+    
       $headers = "From: $name <$email>\r\nReply-To: $email\r\n";
       
-      // Send the email
+      
       mail($to, $subject, $email_message, $headers);
       
-      // Display a success message
+      
       echo "<p style='color: green; font-weight: bold;'>Message sent successfully!</p>";
   }
   ?>
