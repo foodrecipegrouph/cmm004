@@ -89,7 +89,7 @@
                                                 style="padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;"><b>Call
                                                     Us</b></a>
                                         <li class="dinone"><img style="margin-right: 15px;" src="images/mail_icon.png"
-                                                alt="#"><a href="mailto:sefaboakye41@gmail.com"
+                                                alt="#"><a href="mailto:foodrecipegrouph@outlook.com"
                                                 style="padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;"><b>Message
                                                     Us</b></a>
                                         <li class="dinone"><img style="margin-right: 15px;"
