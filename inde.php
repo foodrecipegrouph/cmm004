@@ -76,7 +76,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="full">
-                                <a class="logo" href="inde.php"><img src="images/logo" height='70px' width ='70px' alt="logo" /></a>
+                                <a class="logo" href="inde.php"><img src="images/logo.jpeg" height='70px' width ='70px' alt="logo" /></a>
                             </div>
                         </div>
                         <div class="col-md-9">
